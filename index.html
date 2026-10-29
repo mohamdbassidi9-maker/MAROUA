@@ -1,0 +1,234 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Best Maroua ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #170b2e, #531747, #a83265);
+    color: white;
+    text-align: center;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(white 1px, transparent 1px),
+      radial-gradient(#ffd4e7 1px, transparent 1px);
+    background-size: 75px 75px, 110px 110px;
+    background-position: 0 0, 35px 40px;
+    animation: sparkle 4s infinite alternate;
+}
+
+.card {
+    position: relative;
+    z-index: 2;
+    width: min(90%, 650px);
+    padding: 40px 25px;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 28px;
+    background: rgba(255,255,255,.10);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 45px rgba(255,105,180,.25);
+    animation: appear 1.5s ease;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #fff, #ffb5d5, #fff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: glow 2s infinite alternate;
+}
+
+.heart {
+    color: #ff8dbb;
+    font-size: 45px;
+    animation: heartbeat 1.2s infinite;
+    margin-bottom: 18px;
+}
+
+h2 {
+    color: #ffd1e5;
+    margin-bottom: 18px;
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin: 15px 0;
+    color: #fff0f6;
+}
+
+.signature {
+    color: #ffb5d5;
+    font-style: italic;
+    margin-top: 22px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 13px 25px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #ff6fae, #ffb6d5);
+    color: #39102d;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 25px #ff8dbb;
+}
+
+.floating-heart {
+    position: fixed;
+    bottom: -40px;
+    color: #ff9ac6;
+    pointer-events: none;
+    animation: floatUp 7s linear forwards;
+    z-index: 1;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 8px #ff9ac6; }
+    to { text-shadow: 0 0 28px #ff69a9; }
+}
+
+@keyframes sparkle {
+    from { opacity: .35; }
+    to { opacity: 1; }
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .card { padding: 30px 18px; }
+    p { font-size: .95rem; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<main class="card">
+
+    <div class="heart">♥</div>
+
+    <h1>THE BEST<br>MAROUA</h1>
+
+    <h2>To the sweetest girl in my life 🌷</h2>
+
+    <p>
+        My dearest Maroua, ❤️<br>
+        I pray with all my heart that you get well soon.
+        May every pain disappear, may your heart feel
+        peaceful, and may happiness always find its way to you.
+    </p>
+
+    <p>
+        You deserve all the beautiful things in this world.
+        I hope you always stay healthy, keep your beautiful
+        smile, and never lose the light that makes you special.
+    </p>
+
+    <p>
+        May God protect you, heal you, and fill your days
+        with love, comfort, and endless reasons to smile.
+        Please take good care of yourself. You deserve the best. 💗
+    </p>
+
+    <p class="signature">
+        With all my respect, care, and love — always. ❤️
+    </p>
+
+    <button id="musicBtn" onclick="toggleMusic()">
+        ▶ Play Our Music 🎵
+    </button>
+
+    <audio id="music" src="song.mp3" loop preload="none"></audio>
+
+</main>
+
+<script>
+const music = document.getElementById("music");
+const button = document.getElementById("musicBtn");
+
+async function toggleMusic() {
+    if (music.paused) {
+        try {
+            await music.play();
+            button.textContent = "❚❚ Pause Music 🎵";
+        } catch (error) {
+            button.textContent = "Couldn't play — check song.mp3";
+        }
+    } else {
+        music.pause();
+        button.textContent = "▶ Play Our Music 🎵";
+    }
+}
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "floating-heart";
+    heart.textContent = ["♥", "♡", "💗", "✨"][
+        Math.floor(Math.random() * 4)
+    ];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (16 + Math.random() * 22) + "px";
+    heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 10000);
+}
+
+setInterval(createHeart, 600);
+</script>
+
+</body>
+</html>
+```
